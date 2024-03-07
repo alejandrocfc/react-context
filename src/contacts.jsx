@@ -1,9 +1,15 @@
+import {useContext} from "react";
 import User from "./user.jsx";
-import PropTypes from "prop-types";
+import {AppContext, AppDispatchContext} from "./context.js";
 
-const Contacts = ({users, onClick}) => {
+const Contacts = () => {
+  const dispatch = useContext(AppDispatchContext);
+  const users = useContext(AppContext).filter(user => !user.isFavorite);
   const addFavorite = (user) => {
-    onClick({...user, isFavorite: true})
+    dispatch({
+      type: 'addFavorite',
+      id: user.id
+    })
   }
   return (
     <section>
@@ -13,11 +19,6 @@ const Contacts = ({users, onClick}) => {
       ))}
     </section>
   )
-}
-
-Contacts.propTypes = {
-  onClick: PropTypes.func,
-  users: PropTypes.arrayOf({})
 }
 
 export default Contacts;

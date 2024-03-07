@@ -13,13 +13,13 @@ const User = ({user, onClick}) => {
 
 User.propTypes = {
   onClick: PropTypes.func,
-  user: {
-    id: PropTypes.string,
+  user: PropTypes.shape({
+    id: PropTypes.number,
     name: PropTypes.string,
     email: PropTypes.string,
     isFavorite: PropTypes.bool,
     isDeleted: PropTypes.bool
-  }
+  })
 }
 
 export default User;
