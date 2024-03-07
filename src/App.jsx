@@ -10,7 +10,7 @@ function App() {
     {id: 3, name: 'Test', email: 'test@mail.com', isFavorite: false, isDeleted: false},
   ])
 
-  //Pueden ser acciones para el context
+  //Al usar useContext en cada componente está función se puede colocar en cada uno de ellos
   const userFavorites = users.filter(user => user.isFavorite);
   const userContacts = users.filter(user => !user.isFavorite);
 
@@ -27,6 +27,7 @@ function App() {
   }
   return (
     <>
+      {/*REMOVER PROPIEDADES EN CADA COMPONENTE*/}
       <Favorites users={userFavorites} onClick={handleUser} />
       <Contacts users={userContacts} onClick={handleUser} />
     </>
